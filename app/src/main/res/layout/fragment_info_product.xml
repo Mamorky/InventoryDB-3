@@ -112,7 +112,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txv_product_seller" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/edtModelo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_edt_product"
@@ -141,7 +141,7 @@
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="@+id/imageView13"
             app:layout_constraintStart_toEndOf="@+id/barrier"
-            app:layout_constraintTop_toBottomOf="@+id/editText2" />
+            app:layout_constraintTop_toBottomOf="@+id/edtModelo" />
 
         <TextView
             android:id="@+id/txv_product_subcategory"
@@ -195,7 +195,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txv_product_type" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/edt_product_description"
             android:layout_width="wrap_content"
             android:layout_height="84dp"
             android:background="@drawable/shape_edt_product"
@@ -213,7 +213,7 @@
             app:layout_constraintEnd_toEndOf="@+id/barrier"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/editText3" />
+            app:layout_constraintTop_toBottomOf="@+id/edt_product_description" />
 
         <EditText
             android:id="@+id/edt_product_price"

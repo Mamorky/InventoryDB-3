@@ -10,9 +10,10 @@ import com.example.jaime.inventorydb.R;
 /**
  * Clase que muestra la activity de Product.
  */
-public class ProductActivity extends AppCompatActivity {
+public class ProductActivity extends AppCompatActivity implements ListProductFragment.OnLoadViewProduct{
 
     ListProductFragment listProductFragment;
+    ViewProductFragment viewProductFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,18 @@ public class ProductActivity extends AppCompatActivity {
             listProductFragment = ListProductFragment.newInstance(null);
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.add(android.R.id.content,listProductFragment,ListProductFragment.TAG).commit();
+        }
+    }
+
+    @Override
+    public void loadViewProduct(Bundle product) {
+        viewProductFragment = (ViewProductFragment) getSupportFragmentManager().findFragmentByTag(ViewProductFragment.TAG);
+
+        if (viewProductFragment == null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            viewProductFragment = ViewProductFragment.newInstance(product);
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(android.R.id.content,viewProductFragment,ListProductFragment.TAG).commit();
         }
     }
 }

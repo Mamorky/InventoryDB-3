@@ -3,6 +3,8 @@ package com.example.jaime.inventorydb.data.db;
 import android.provider.BaseColumns;
 
 import com.example.jaime.inventorydb.data.db.model.Category;
+import com.example.jaime.inventorydb.data.db.model.Product;
+import com.example.jaime.inventorydb.data.db.model.ProductClass;
 
 import java.util.HashMap;
 
@@ -364,7 +366,6 @@ public final class InventoryContract {
         public static final String COLUMN_DESCRIPTION = "description";
         public static final String COLUMN_CATEGORY = "category";
         public static final String COLUMN_CATEGORYNAME = "categoryname";
-        public static final String COLUMN_SUBCATEGORY = "subcategory";
         public static final String COLUMN_PRODUCTCLASS = "productClass";
         public static final String COLUMN_PRODUCTCLASSDESCRIPTION = "productClassDescription";
         public static final String COLUMN_SECTOR = "sector";
@@ -379,20 +380,37 @@ public final class InventoryContract {
 
         public static final String[] ALL_COLUMNS = new String[] {
                 _ID, COLUMN_SERIAL, COLUMN_MODELCODE, COLUMN_SORTNAME, COLUMN_DESCRIPTION, COLUMN_CATEGORY,COLUMN_CATEGORYNAME,
-                COLUMN_SUBCATEGORY, COLUMN_PRODUCTCLASS,COLUMN_PRODUCTCLASSDESCRIPTION, COLUMN_SECTOR, COLUMN_QUANTITY, COLUMN_VALUE, COLUMN_VENDOR,
+                COLUMN_PRODUCTCLASS,COLUMN_PRODUCTCLASSDESCRIPTION, COLUMN_SECTOR, COLUMN_QUANTITY, COLUMN_VALUE, COLUMN_VENDOR,
                 COLUMN_BITMAP, COLUMN_IMAGENAME, COLUMN_URL, COLUMN_DATEPURCHASE, COLUMN_NOTES
         };
 
         public static final String PRODUCT_INNER = String.format("%s inner join %s on %s=%s.%s",TABLE_NAME,
-                CategoryEntry.TABLE_NAME,COLUMN_CATEGORY, CategoryEntry.TABLE_NAME,
-                CategoryEntry._ID)+String.format("%s inner join %s on %s=%s.%s",TABLE_NAME,
-                ProductClassEntry.TABLE_NAME,COLUMN_PRODUCTCLASS,ProductClassEntry.TABLE_NAME,
+                CategoryEntry.TABLE_NAME,COLUMN_CATEGORY,CategoryEntry.TABLE_NAME,
+                CategoryEntry._ID)+String.format(" inner join %s on %s=%s.%s",
+                ProductClassEntry.TABLE_NAME,COLUMN_PRODUCTCLASS, ProductClassEntry.TABLE_NAME,
                 ProductClassEntry._ID);
 
         public static HashMap<String,String> sProductProjectionMap;
         static {
             sProductProjectionMap = new HashMap<>();
-            sProductProjectionMap.put(ProductClassEntry._ID,ProductClassEntry.TABLE_NAME+"."+ProductClassEntry._ID);
+            sProductProjectionMap.put(ProductInnerEntry._ID, ProductInnerEntry.TABLE_NAME+"."+ProductInnerEntry._ID);
+            sProductProjectionMap.put(COLUMN_SERIAL,TABLE_NAME+"."+COLUMN_SERIAL);
+            sProductProjectionMap.put(COLUMN_MODELCODE,TABLE_NAME+"."+COLUMN_MODELCODE);
+            sProductProjectionMap.put(COLUMN_SORTNAME,TABLE_NAME+"."+COLUMN_SORTNAME);
+            sProductProjectionMap.put(COLUMN_DESCRIPTION,TABLE_NAME+"."+COLUMN_DESCRIPTION);
+            sProductProjectionMap.put(COLUMN_CATEGORY,TABLE_NAME+"."+COLUMN_CATEGORY);
+            sProductProjectionMap.put(COLUMN_CATEGORYNAME,CategoryEntry.TABLE_NAME+"."+CategoryEntry.COLUMN_NAME);
+            sProductProjectionMap.put(COLUMN_PRODUCTCLASS,TABLE_NAME+"."+COLUMN_PRODUCTCLASS);
+            sProductProjectionMap.put(COLUMN_PRODUCTCLASSDESCRIPTION,ProductClassEntry.TABLE_NAME+"."+ProductClassEntry.COLUMN_DESCRIPTION);
+            sProductProjectionMap.put(COLUMN_SECTOR,TABLE_NAME+"."+COLUMN_SECTOR);
+            sProductProjectionMap.put(COLUMN_QUANTITY,TABLE_NAME+"."+COLUMN_QUANTITY);
+            sProductProjectionMap.put(COLUMN_VALUE,TABLE_NAME+"."+COLUMN_VALUE);
+            sProductProjectionMap.put(COLUMN_VENDOR,TABLE_NAME+"."+COLUMN_VENDOR);
+            sProductProjectionMap.put(COLUMN_BITMAP,TABLE_NAME+"."+COLUMN_BITMAP);
+            sProductProjectionMap.put(COLUMN_IMAGENAME,TABLE_NAME+"."+COLUMN_IMAGENAME);
+            sProductProjectionMap.put(COLUMN_URL,TABLE_NAME+"."+COLUMN_URL);
+            sProductProjectionMap.put(COLUMN_DATEPURCHASE,TABLE_NAME+"."+COLUMN_DATEPURCHASE);
+            sProductProjectionMap.put(COLUMN_NOTES,TABLE_NAME+"."+COLUMN_NOTES);
         }
     }
 }

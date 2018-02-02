@@ -1,5 +1,8 @@
 package com.example.jaime.inventorydb.ui.product;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -33,6 +36,12 @@ public class ListProductFragment extends ListFragment implements ListProductCont
 
     ProductAdapter mAdapter;
     ListProductPresenter mPresenter;
+    OnLoadViewProduct mCallback;
+
+    interface OnLoadViewProduct{
+        void loadViewProduct(Bundle product);
+    }
+
 
     public static ListProductFragment newInstance(Bundle bundle) {
         ListProductFragment listProductFragment = new ListProductFragment();
@@ -41,6 +50,13 @@ public class ListProductFragment extends ListFragment implements ListProductCont
             listProductFragment.setArguments(bundle);
 
         return listProductFragment;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if(mCallback == null)
+            mCallback = (OnLoadViewProduct) activity;
     }
 
     @Nullable
@@ -66,7 +82,9 @@ public class ListProductFragment extends ListFragment implements ListProductCont
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Product product = (Product) parent.getItemAtPosition(position);
-                Toast.makeText(getActivity(),product.getSortname(),Toast.LENGTH_SHORT).show();
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("producto",(Product)parent.getItemAtPosition(position));
+                mCallback.loadViewProduct(bundle);
             }
         });
     }
