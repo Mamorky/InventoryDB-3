@@ -1,7 +1,8 @@
 package com.example.jaime.inventorydb.data.db.repository;
 
+import com.example.jaime.inventorydb.data.DependencyDao;
 import com.example.jaime.inventorydb.data.db.model.Dependency;
-import com.example.jaime.inventorydb.data.db.repository.dao.DependencyDao;
+import com.example.jaime.inventorydb.data.provider.dao.DependencyDaoImp;
 import com.example.jaime.inventorydb.ui.InteractorCallback;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class DependencyRepository {
 
 
     private DependencyRepository() {
-        this.mDao = new DependencyDao();
+        this.mDao = new DependencyDaoImp();
     }
 
 

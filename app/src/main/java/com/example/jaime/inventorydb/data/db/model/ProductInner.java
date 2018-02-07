@@ -9,11 +9,13 @@ import android.os.Parcel;
 public class ProductInner{
 
     Product product;
-    String CategoryName;
-    String ProductName;
+    String categoryName;
+    String productName;
 
-    public ProductInner(Product product) {
+    public ProductInner(Product product,String categoryName,String productName) {
         this.product = product;
+        this.categoryName = categoryName;
+        this.productName = productName;
     }
 
     public Product getProduct() {
@@ -25,18 +27,18 @@ public class ProductInner{
     }
 
     public String getCategoryName() {
-        return CategoryName;
+        return categoryName;
     }
 
     public void setCategoryName(String categoryName) {
-        CategoryName = categoryName;
+        categoryName = categoryName;
     }
 
     public String getProductName() {
-        return ProductName;
+        return productName;
     }
 
     public void setProductName(String productName) {
-        ProductName = productName;
+        productName = productName;
     }
 }

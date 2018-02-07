@@ -1,15 +1,10 @@
 package com.example.jaime.inventorydb.data.db.repository;
 
-import com.example.jaime.inventorydb.data.db.InventoryContract;
-import com.example.jaime.inventorydb.data.db.model.Dependency;
 import com.example.jaime.inventorydb.data.db.model.Product;
 import com.example.jaime.inventorydb.data.db.model.ProductInner;
-import com.example.jaime.inventorydb.data.db.repository.dao.DependencyDao;
 import com.example.jaime.inventorydb.data.db.repository.dao.ProductDao;
-import com.example.jaime.inventorydb.ui.InteractorCallback;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * Clase repositorio que contiene todos los datos de Product.

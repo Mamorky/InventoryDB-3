@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.jaime.inventorydb.data.DependencyDao;
 import com.example.jaime.inventorydb.data.db.InventoryContract;
 import com.example.jaime.inventorydb.data.db.model.Dependency;
 import com.example.jaime.inventorydb.data.db.InventoryOpenHelper;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
  * Created by jaime on 24/01/2018.
  */
 
-public class DependencyDao {
+public class DependencyDaoImp implements DependencyDao{
     ArrayList<Dependency> mDependencies;
 
 

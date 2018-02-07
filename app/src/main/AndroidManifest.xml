@@ -29,6 +29,9 @@
         <activity android:name="com.example.jaime.inventorydb.ui.prefs.AccountSettingActivity" />
         <activity android:name="com.example.jaime.inventorydb.ui.prefs.GeneralSettingActivity" />
         <activity android:name="com.example.jaime.inventorydb.ui.about.AboutUsActivity" />
+        <provider
+            android:authorities="data.provider.InventoryProviderContract"
+            android:name=".data.provider.InventoryProvider"/>
     </application>
 
 </manifest>
